@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Node</title>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #66fcf1;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+    }
+    input[type="text"] {
+      background: black;
+      border: 1px solid #66fcf1;
+      color: #66fcf1;
+      padding: 10px;
+      font-size: 18px;
+      width: 200px;
+      margin-bottom: 15px;
+      text-align: center;
+      letter-spacing: 4px;
+    }
+    button {
+      background-color: #45a29e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #66fcf1;
+      color: #0b0c10;
+    }
+    #output {
+      margin-top: 20px;
+      color: #ffffff;
+      white-space: pre-wrap;
+      background: #1f2833;
+      padding: 15px;
+      border: 1px solid #66fcf1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Access Node Terminal</h1>
+    <p>Enter 4-Digit Code:</p>
+    <input type="text" id="codeInput" maxlength="4" placeholder="####">
+    <br>
+    <button onclick="revealSecret()">Access</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const secrets = {
+      "1234": "This is a placeholder secret for code 1234.",
+      "5678": "This is a placeholder secret for code 5678."
+      // Add your real codes and secrets here
+    };
+
+    function revealSecret() {
+      const code = document.getElementById("codeInput").value;
+      const output = document.getElementById("output");
+      if (secrets[code]) {
+        output.textContent = secrets[code];
+      } else {
+        output.textContent = "ACCESS DENIED. Invalid or unauthorized code.";
+      }
+    }
+  </script>
+</body>
+</html>
