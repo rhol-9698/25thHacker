@@ -52,6 +52,27 @@
       padding: 15px;
       border: 1px solid #66fcf1;
     }
+    #progressContainer {
+      width: 100%;
+      margin-top: 30px;
+      padding: 0 30px;
+    }
+    #progressBar {
+      height: 20px;
+      background-color: #1f2833;
+      border: 1px solid #66fcf1;
+      width: 100%;
+      margin-top: 10px;
+    }
+    #progressBarFill {
+      height: 100%;
+      background-color: #66fcf1;
+      width: 0%;
+    }
+    #unlockButton {
+      margin-top: 20px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -62,22 +83,64 @@
     <br>
     <button onclick="revealSecret()">Access</button>
     <div id="output"></div>
+    <div id="progressContainer">
+      <p>Database Status:</p>
+      <div id="progressBar">
+        <div id="progressBarFill"></div>
+      </div>
+      <button id="unlockButton" onclick="window.location.href='all-players.html'">View Full Database</button>
+    </div>
   </div>
 
   <script>
     const secrets = {
-      "1234": "This is a placeholder secret for code 1234.",
-      "5678": "This is a placeholder secret for code 5678."
-      // Add your real codes and secrets here
+      "7375": "CEO 1 access confirmed.",
+      "9599": "CEO 2 access confirmed.",
+      "9868": "Journalist access confirmed.",
+      "4038": "Private Investigator access confirmed.",
+      "1229": "Hacker access confirmed.",
+      "2607": "Bodyguard access confirmed.",
+      "9197": "Pool Hustler access confirmed.",
+      "9069": "Trust Fund Baby access confirmed.",
+      "2980": "Thief access confirmed.",
+      "6315": "Auctioneer access confirmed.",
+      "3977": "Security Guard access confirmed.",
+      "2229": "Black Market Dealer access confirmed.",
+      "5544": "Undercover Cop access confirmed.",
+      "3591": "Blackmailer access confirmed.",
+      "5422": "Gambler access confirmed.",
+      "1722": "Fortune Teller access confirmed.",
+      "6474": "Art Collector access confirmed.",
+      "1003": "Spy access confirmed.",
+      "7198": "Detective access confirmed.",
+      "5955": "Philanthropist access confirmed.",
+      "2987": "Inventor access confirmed.",
+      "3792": "Bartender access confirmed.",
+      "8464": "Forger access confirmed.",
+      "5778": "Pickpocket access confirmed."
     };
+
+    let unlockedCodes = new Set();
 
     function revealSecret() {
       const code = document.getElementById("codeInput").value;
       const output = document.getElementById("output");
       if (secrets[code]) {
         output.textContent = secrets[code];
+        unlockedCodes.add(code);
+        updateProgressBar();
       } else {
         output.textContent = "ACCESS DENIED. Invalid or unauthorized code.";
+      }
+    }
+
+    function updateProgressBar() {
+      const percent = (unlockedCodes.size / 24) * 100;
+      const bar = document.getElementById("progressBarFill");
+      bar.style.width = percent + "%";
+
+      if (percent >= 100) {
+        document.getElementById("unlockButton").style.display = "block";
       }
     }
   </script>
