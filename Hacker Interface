@@ -29,6 +29,8 @@
       font-size: 18px;
       width: 200px;
       margin-bottom: 15px;
+      text-align: center;
+      letter-spacing: 4px;
     }
     button {
       background-color: #45a29e;
@@ -55,7 +57,7 @@
 <body>
   <div class="container">
     <h1>Access Node Terminal</h1>
-    <p>Enter Access Code:</p>
+    <p>Enter 4-Digit Code:</p>
     <input type="text" id="codeInput" maxlength="4" placeholder="####">
     <br>
     <button onclick="revealSecret()">Access</button>
@@ -65,8 +67,8 @@
   <script>
     const secrets = {
       "1234": "This is a placeholder secret for code 1234.",
-      "5678": "This is a placeholder secret for code 5678.",
-      // Add more 4-digit codes and their corresponding secrets here
+      "5678": "This is a placeholder secret for code 5678."
+      // Add your real codes and secrets here
     };
 
     function revealSecret() {
@@ -81,4 +83,3 @@
   </script>
 </body>
 </html>
-
