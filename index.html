@@ -126,17 +126,22 @@
 
     let unlockedCodes = new Set();
 
-    function revealSecret() {
-      const code = document.getElementById("codeInput").value;
-      const output = document.getElementById("output");
-      if (secrets[code]) {
-        output.textContent = "Input Confirmed.";
-        unlockedCodes.add(code);
-        updateProgressBar();
-      } else {
-        output.textContent = "ACCESS DENIED. Invalid or unauthorized code.";
-      }
+function revealSecret() {
+  const code = document.getElementById("codeInput").value;
+  const output = document.getElementById("output");
+
+  if (secrets[code]) {
+    output.textContent = "Input Confirmed.";
+    unlockedCodes.add(code);
+
+    // Only count progress if the code is NOT the Hacker (1229)
+    if (code !== "1229") {
+      updateProgressBar();
     }
+  } else {
+    output.textContent = "ACCESS DENIED. Invalid or unauthorized code.";
+  }
+}
 
     function updateProgressBar() {
       const percent = Math.round((unlockedCodes.size / 16) * 100);
